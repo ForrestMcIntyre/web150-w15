@@ -22,8 +22,11 @@ buy can
 else buy bottle
 */
 
+// && - AND
+// || - OR
+
 var cash = 2.00;
-if (cash < 0.75) {
+if (cash < .75 || cash > 5) {
   console.log("Go to the store");
 } else if (cash < 1.75) {
   console.log("Buy a can of soda.");
@@ -51,6 +54,8 @@ switch(cat) {
   default:
     console.log("I don't know about your cat");
 }
+
+
     </script>
   </body>
 </html>
