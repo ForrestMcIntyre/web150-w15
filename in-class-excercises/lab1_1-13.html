@@ -30,6 +30,27 @@ if (cash < 0.75) {
 } else {
   console.log("Buy a bottle of soda.");
 }
+
+// switch / case - useful for discrete, categorical choice
+
+var cat = prompt("What kind of cat do you want?"); // http://tica.org/cat-breeds/item/254 or http://www1.fifeweb.org/dnld/std/RAG.pdf - IT IS REAL @Thomas Wilburn!
+cat = cat.toLowerCase();
+switch(cat) {
+  case "tabby":
+    console.log("Red delicious of cats");
+    break;
+
+  case "tortoiseshell":
+    console.log("The best of cats - almost always female");
+    break;
+
+  case "ragdoll":
+    console.log("The ragdoll is NOT a lie!");
+    break;
+
+  default:
+    console.log("I don't know about your cat");
+}
     </script>
   </body>
 </html>
