@@ -16,7 +16,7 @@ if (!westSide) {
   var price = prompt("How much money can you spend?");
   // price * 1;
   price = Number(price);
-  if (price < 5) {
+  if (price <= 5) {
     console.log("Tacos Chukis");
   } else if (price < 10) {
     console.log("5 Point");
@@ -29,13 +29,16 @@ if (!westSide) {
       case "pizza":
         console.log("Delancey");
         break;
+
       case "happy hour":
         console.log("Ruth's Chris Steakhouse");
         break;
+
       case "seafood":
-      case "shushi":
+      case "sushi":
         console.log("Shiro");
         break;
+
       default:
         console.log("Taco Bell");
     }
