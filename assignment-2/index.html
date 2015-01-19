@@ -7,7 +7,64 @@
 	<body>
 		This space intentionally left blank.
 		<script>
+var trip = confirm("Are you planning on going on a trip?");
+if(trip) {
+	var place = prompt("Which continent would you like to travel to?");
+	place = place.toLowerCase();
+	switch(place){
+		case "asia":
+			var humid = confirm("Do you like humidity?");
+			if(humid) {
+				console.log("You should definately go to Bali, Indonesia. It is one of the most spiritual places on the planet and has the perfect environment for you!");
+			} else {
+				var tech = confirm("What about technology? Do you like that?");
+				if (tech){
+					console.log("Soeul, Korea is a great place for your interests");
+				} else {
+					console.log("I hear China is an amazing place to visit");
+				}
+			}
+		break;
 
+		case "africa":
+			console.log("Make sure you ride an elephant while you are there!");
+		break;
+
+		case "austrailia":
+			console.log("Travelling to the outback are ya? Sweet man");
+		break;
+
+		case "america":
+			var america = prompt("There are 2 americas. Did you mean north or south? (N/S)");
+			america = america.toLowerCase();
+			switch (america){
+				case "north":
+				case "n":
+					console.log("North America is a great location! May I suggest Washington State?");
+				break;
+
+				case "south":
+				case "s":
+					console.log("South America is lovely this time of year. Probably best to learn or know Spanish before you go");
+				break;
+			}
+		break;
+
+		case "antartica":
+			console.log("Thats cool bro. Don't get too cold.");
+		break;
+
+		case "europe":
+			console.log("History everywhere. Make sure not to miss anything!");
+		break;
+
+		default:
+			console.log("Unknown continent. This application is only applicable to earth");
+	}
+
+} else {
+	console.log("Sorry. This is the wrong tool for you.");
+}
 		</script>
 	</body>
 </html>
