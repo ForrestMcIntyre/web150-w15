@@ -51,7 +51,16 @@ if(trip) {
 		break;
 
 		case "antartica":
-			console.log("Thats cool bro. Don't get too cold.");
+			var time = prompt("How many days are you wanting to stay?");
+			time = time *1;
+			if (time < 5)
+			{
+				console.log("Good! Not too long... You don't want to freeze");
+			} else if (time < 10) {
+				console.log("Uh oh. That may be a bit long. Don't forget to pack warm clothes!");
+			} else {
+				console.log("Wow. That's extremely cold. You are insane!");
+			}
 		break;
 
 		case "europe":
