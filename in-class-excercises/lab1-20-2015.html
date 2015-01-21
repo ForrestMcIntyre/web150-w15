@@ -1,0 +1,72 @@
+<!doctype>
+<script>
+var names = ["Thomas", "Belle", "Wallace", "Pumpkin"];
+console.log(names[3]);
+names[3] = "Neko";
+// names.push("Nermal");
+names.push("Nermal");
+// names[400] = "Nermal";
+console.log(names);
+var nermal = names.pop();
+console.log(names, nermal, names.length);
+
+for (var i = 0; i < names.length; i++){
+  console.log(names[i]);
+}
+
+var list = [1,1,2,3,5,8,13,21];
+//add up all these numbers
+var sum = 0;
+for(i = 0; i < list.length; i++){
+  var item = list[i];
+  sum += item;
+}
+console.log("Sum of this list: ", sum);
+
+//find an average
+var average = sum/list.length;
+console.log("Average of this list: ", average);
+
+//count how many numbers are great than 4
+var count = 0;
+for(i = 0; i < list.length; i++){
+  var item = list[i];
+  if (item > 4){
+    count++;
+  }
+}
+console.log("Numbers greater than 4 in this list: ", count);
+
+var odds = [];
+for(i = 0; i < list.length; i++){
+  var item = list[i];
+  if (item % 2){
+    odds.push(item);
+  }
+}
+console.log("Odd numbers in this list: ", odds);
+
+//double each item and store it in-place
+for(i = 0; i < list.length; i++){
+  var item = list[i];
+  list[i] *= 2;
+}
+console.log("Doubled: ", list);
+
+var randoms = [-3, 4, 17, -47, 8, 122];
+
+//find the highest and the lowest
+var min = Infinity;
+var max = -Infinity;
+for(i = 0; i < randoms.length; i++){
+  var item = randoms[i];
+  if (item > max) {
+    max = item;
+  }
+  if (item < min) {
+    min = item;
+  }
+}
+console.log("Min:", min, "Max:", max);
+
+</script>
