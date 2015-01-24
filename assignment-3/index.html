@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Assignment 3</title>
+		<meta charset="utf8">
+	</head>
+	<body>
+		This space intentinoally left blank.
+	<script src="http://thomaswilburn.net/scc/data/quakes.js"></script>
+	<script>
+// What was the size of the biggest earthquake this week?
+var biggestQuake = -Infinity;
+var depthBiggestQuake;
+for (var i = 0; i < magnitude.length; i++) {
+	var current = magnitude[i];
+	if (current > biggestQuake){
+		biggestQuake = current;
+		depthBiggestQuake = depth[i];
+	}
+};
+console.log("The biggest earthquake this week was:", biggestQuake);
+// What is the average depth where a quake takes place?
+var sumDepth = 0;
+for (var i = 0; i < depth.length; i++) {
+	sumDepth+=depth[i];
+}
+console.log("The average depth was:", sumDepth / depth.length);
+
+// How many quakes have a type other than "earthquake" (e.g., "quarry blast" and "explosion")
+var otherType = [];
+for (var i = 0; i < type.length; i++){
+	var currentType = type[i];
+	if(currentType != "earthquake"){
+		var newType = true;
+		for (var j = 0; j < otherType.length; j++)
+		{
+			if (currentType == otherType[j]){
+				newType = false;
+			}
+		}
+		if(newType){
+			otherType.push(currentType);
+			//console.log("Found a new type:", currentType);
+		}
+	}
+}
+console.log("There are ", otherType.length ," types of quakes other than 'earthquake'");
+
+// What's the depth of the biggest quake?
+console.log("The depth of the biggest quake was:", depthBiggestQuake);
+// What's the average magnitude of quakes with a type of "explosion"?
+var totalMagnitude = 0;
+var count = 0;
+for (var i = 0; i < magnitude.length; i++){
+	if (type[i] == "explosion"){
+		totalMagnitude += magnitude[i];
+		count++;
+	}
+}
+console.log("Average magnitude of explosion type quakes was:", totalMagnitude / count);
+
+// How many earthquakes had a magnitude greather than 2.0?
+var countMagnitude = 0;
+for (var i = 0; i < magnitude.length; i++){
+	if (magnitude[i] > 2.0){
+		countMagnitude++;
+	}
+}
+console.log("There were ", countMagnitude, " earthquakes with a magnitude over 2.0");
+	</script>
+	</body>
+</html>
