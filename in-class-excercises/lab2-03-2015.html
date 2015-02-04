@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <title>jQuery!</title>
+  <meta charset="utf8">
+</head>
+<body>
+  <p class="hello" id="world">
+    <span>This space is <b>intentionally</b> left blank.</span>
+
+  <p>
+    This is a second <b>paragraph</b>.
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script>
+var paragraphs = $("p.hello");
+if (!paragraphs.length){
+  console.log("Nothing found");
+}
+//paragraphs.html("Set from jQuery!");
+paragraphs.css("background", "cadetblue");
+paragraphs.fadeOut(1 * 1000);
+paragraphs.fadeIn(2 * 1000);
+//paragraphs.slideUp();
+//paragraphs.slideDown();
+
+var b = paragraphs.find("b");
+b.css("color", "peru");
+
+var span = $("b").closest("span");
+//span.slideUp();
+span.css("color", "rebeccapurple");
+  </script>
+</body>
+</html>
