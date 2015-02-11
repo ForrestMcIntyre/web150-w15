@@ -42,7 +42,36 @@ for(var i = 0; i < man.length; i++){
 }
 console.log("Average market cap for companies in the manufacturing sector is", avg/man.length);
 //*Which sector has the highest number of employees? Which has the lowest?
+var sectors = {};
 
+for(var i = 0; i < companies.length; i++){
+	var item = companies[i];
+	var sectorKey = item.sector;
+	if(!sectors[sectorKey]){
+		sectors[sectorKey] = [];
+	}
+	sectors[sectorKey].push(item.employees);
+}
+
+var highestEmployees = {sector:"", employees:-Infinity};
+var lowestEmployees = {sector:"", employees:Infinity};
+for (var key in sectors){
+	var sumEmployees = 0;
+	var item = sectors[key];
+	for (var i = 0; i < item.length; i++){
+		sumEmployees += item[i];
+	}
+	if (sumEmployees > highestEmployees.employees){
+		highestEmployees.sector = key;
+		highestEmployees.employees = sumEmployees;
+	}
+	if (sumEmployees < lowestEmployees.employees){
+		lowestEmployees.sector = key;
+		lowestEmployees.employees = sumEmployees;
+	}
+}
+console.log("most employees in sector ", highestEmployees.sector," with ", highestEmployees.employees," employees");
+console.log("lowest employees in sector ", lowestEmployees.sector," with ", lowestEmployees.employees," employees");
 //*Which company had the highest gain in ranking from the previous year, and which had the highest drop in ranking?
 
 	</script>
