@@ -115,12 +115,17 @@
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<script>
 var dogs = $(".dog");
+
 var filterButtons = $(".filter");
 filterButtons.on("click",function(){
-var $this = $(this);
-var filter = $this.attr("data-filter");
-dogs.hide();
-dogs.filter("."+filter).show();
+	var $this = $(this);
+	var filter = $this.attr("data-filter");
+	dogs.hide();
+	dogs.filter("."+filter).show();
+});
+var reset = $(".reset");
+reset.on("click", function(){
+	dogs.show();
 });
 	</script>
 </body>
