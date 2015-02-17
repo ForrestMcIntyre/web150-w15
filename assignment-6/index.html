@@ -39,70 +39,70 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="pitbull female md black white">
+				<tr class="dog pitbull female md black white">
 					<td>Ashland</td>
 					<td>American Pit Bull Terrier/Bull Terrier Mix</td>
 					<td>Female</td>
 					<td>Medium</td>
 					<td>Black and White</td>
 				</tr>
-				<tr class="hound male md black tan">
+				<tr class="dog hound male md black tan">
 					<td>Bee Bug</td>
 					<td>Hound/Mix</td>
 					<td>Male</td>
 					<td>Medium</td>
 					<td>Black and Tan</td>
 				</tr>
-				<tr class="poodle male sm white">
+				<tr class="dog poodle male sm white">
 					<td>Deveroe</td>
 					<td>Miniature Poodle/Mix</td>
 					<td>Male</td>
 					<td>Small</td>
 					<td>White</td>
 				</tr>
-				<tr class="chihuahua male sm red gray">
+				<tr class="dog chihuahua male sm red gray">
 					<td>Henry</td>
 					<td>Chihuahua/Mix</td>
 					<td>Male</td>
 					<td>Small</td>
 					<td>Red and Gray</td>
 				</tr>
-				<tr class="pitbull male lg white tan">
+				<tr class="dog pitbull male lg white tan">
 					<td>Ozzie</td>
 					<td>Pit Bull/Mix</td>
 					<td>Male</td>
 					<td>Large</td>
 					<td>White and Tan</td>
 				</tr>
-				<tr class="pitbull female md white brindle">
+				<tr class="dog pitbull female md white brindle">
 					<td>Lila</td>
 					<td>Pit Bull/Mix</td>
 					<td>Female</td>
 					<td>Medium</td>
 					<td>White and Brindle</td>
 				</tr>
-				<tr class="eskimo male md white">
+				<tr class="dog eskimo male md white">
 					<td>Kodiak</td>
 					<td>Miniature American Eskimo</td>
 					<td>Male</td>
 					<td>Medium</td>
 					<td>White</td>
 				</tr>
-				<tr class="lab male lg black gray">
+				<tr class="dog lab male lg black gray">
 					<td>Oscar</td>
 					<td>Labrador Retriever/Weimaraner</td>
 					<td>Male</td>
 					<td>Large</td>
 					<td>Black and Gray</td>
 				</tr>
-				<tr class="lab collie female md black white">
+				<tr class="dog lab collie female md black white">
 					<td>Gladys</td>
 					<td>Labrador Retriever/Border Collie</td>
 					<td>Female</td>
 					<td>Medium</td>
 					<td>Black and White</td>
 				</tr>
-				<tr class="chihuahua female tiny white">
+				<tr class="dog chihuahua female tiny white">
 					<td>Zoey</td>
 					<td>Chihuahua</td>
 					<td>Female</td>
@@ -114,6 +114,13 @@
 	</main>
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<script>
-
+var dogs = $(".dog");
+var filterButtons = $(".filter");
+filterButtons.on("click",function(){
+var $this = $(this);
+var filter = $this.attr("data-filter");
+dogs.hide();
+dogs.filter("."+filter).show();
+});
 	</script>
 </body>
