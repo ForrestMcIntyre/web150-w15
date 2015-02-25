@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <title>Regular Expression</title>
+  <meta charset="utf8">
+</head>
+<body>
+  <input class="text-input" required>
+  <ul>
+    <li><input type="radio" value="fruit" name="pies"> Fruit
+    <li><input type="radio" value="meat" name="pies"> Meat
+  </ul>
+  <input type="checkbox"  class="checkmate" value="you win"> Checkmate!
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script>
+var textInput = $(".text-input");
+textInput.val("blank text");
+console.log(textInput.val());
+//console.log($("input[type=radio]:checked").val());
+//console.log($(".checkmate").is(":checked"));
+var checked = $(".checkmate").is(":checked");
+$(".checkmate").attr("checked", "true");
+
+// required input polyfill
+//text do input elelmnts support validity
+var testElement = $("<input>");
+var hasValidity = false;//testElement.prop("validity");
+if (hasValidity){
+  console.log("required/pattern is supported");
+} else {
+  // shim that in
+  console.log("fail");
+  var required = $("[required]");
+  required.on("change", function(){
+    var $this = $(this);
+    var value = $this.val();
+    if (!value){
+      $this.css("border", "1px solid red");
+    } else {
+      $this.css("border", "");
+    }
+  });
+}
+
+
+
+  </script>
+</body>
+</html>
