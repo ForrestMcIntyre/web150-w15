@@ -68,6 +68,31 @@ var chasePointer = function(animal) {
   }
 };
 
+var runFromPointer = function(animal){
+  if (animal.x <= 0){
+    animal.dx = 0;
+  } else if(animal.x >= canvas.width){
+    animal.dx = 0;
+  } else {
+    if(pointer.x < animal.x){
+      animal.dx = 1;
+    } else {
+      animal.dx = -1;
+    }
+  }
+  if (animal.y <= 0){
+    animal.dy = 0;
+  } else if (animal.y >= canvas.height){
+    animal.dy = 0;
+  } else {
+    if (pointer.y <animal.y){
+      animal.dy = 1;
+    } else {
+      animal.dy = -1;
+    }
+  }
+}
+
 var sleep = function(animal) {
   animal.dx = 0;
   animal.dy = 0;
@@ -88,11 +113,7 @@ var animate = function() {
 setTimeout(animate, 16);
 
 $canvas.on("click", function(e) {
-  if (e.shiftKey == true){
-    
-  } else {
-    behavior = wander;
-  }
+  behavior = wander;
 });
 
 var convertToCanvas = function(x, y) {
@@ -109,7 +130,11 @@ $canvas.on("mousemove", function(e) {
   var converted = convertToCanvas(e.pageX, e.pageY);
   pointer.x = converted.x;
   pointer.y = converted.y;
-  behavior = chasePointer;
+  if (e.ctrlKey){
+    behavior = runFromPointer;
+  } else {
+    behavior = chasePointer;
+  }
 });
 
   </script>
