@@ -57,7 +57,8 @@ $(".ing").on("change", function(){
 
 $(".numbers").on("change", function(){
 	var $this = $(this);
-	var regex = /^-?\d+[.,]?\d*(,\d{3})?$/;	var value = $this.val();
+	var regex = /^-?\d+[.,]?\d*(,\d{3})?$/;
+	var value = $this.val();
 	var valid = regex.test(value);
 	if(!valid){
 		console.log("Submit Disabled");
