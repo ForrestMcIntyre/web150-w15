@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <title>My First AJAX</title>
+  <meta charset="utf8">
+</head>
+<body>
+  AJAX!
+  <div class="output"></div>
+  <button class="load" data-cat="yes">LOAD Good</button>
+  <button class="load" data-cat="no">LOAD Bad</button>
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script>
+$(".load").on("click", function() {
+  var $this = $(this);
+  var category = $this.attr("data-cat");
+  var request = $.ajax({
+    url:"http://thomaswilburn.net:8080/magic8",
+    cache: false,
+    data: {
+      category:category
+    },
+    dataType: "jsonp"
+  });
+  request.done(function(data){
+    console.log(data);
+    var output = $(".output");
+    output.html(data.answer);
+    switch(data.category){
+      case "yes":
+        output.css("color", "green");
+        break;
+      case "no":
+        output.css("color", "red");
+        break;
+      default:
+        output.css("color", "");
+        break;
+    }
+  });
+  request.fail(function() {
+    var output = $(".output");
+    output.html("Error contacting server");
+  });
+  request.always(function() {
+    console.log("ALWAYS");
+  })
+});
+console.log("this happens first");
+  </script>
+</body>
+</html>
