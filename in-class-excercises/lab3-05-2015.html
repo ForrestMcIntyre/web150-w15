@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <title>Chatter></title>
+  <style>
+  .output{
+    border: 1px solid black;
+    height: 200px;
+    overflow: scroll;
+  }
+  </style>
+</head>
+<body>
+  <div class="output"></div>
+  <input class="input-name">
+  <input class="input-message">
+  <button class="send">SEND</button>
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script>
+var url = "http://www.thomaswilburn.net:8080/chat";
+var inputName = $(".input-name");
+var inputMessage = $(".input-message");
+var sendButton = $(".send");
+var output = $(".output");
+
+var lastUpdate = 1;
+
+var whenDone = function(data){
+  lastUpdate = data.at;
+  for (var i = 0; i < data.lines.length; i++){
+    var line = data.lines[i];
+    var text = line.name + ": " + line.text + "<br>";
+    output.append(text);
+  }
+};
+
+var getLines = function(){
+  var request = $.ajax({
+    url: url,
+    data: {
+      since: lastUpdate
+    }
+  });
+  request.done(whenDone);
+};
+
+
+
+var poll = function(){
+  getLines();
+  setTimeout(poll, 5 * 1000);
+};
+
+poll();
+
+var sendMessage = function(){
+  var name = inputName.val();
+  var message = inputMessage.val();
+  console.log(name, message);
+
+  var request = $.ajax({
+    url: url,
+    type: "POST",
+    data: JSON.stringify({
+      name: name,
+      text: message,
+      since: lastUpdate
+    })
+  });
+  request.done(whenDone);
+};
+
+sendButton.on("click", sendMessage);
+inputMessage.on("keyup", function(e){
+  if (e.keyCode == 13){
+    sendMessage();
+  }
+});
+
+  </script>
+
+</body>
+</html>
