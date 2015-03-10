@@ -66,3 +66,10 @@ body {
 .post small {
   color: #9197a3;
 }
+.loading {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.loading span {
+  margin: 0 auto;
+}

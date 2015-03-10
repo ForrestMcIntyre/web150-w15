@@ -22,7 +22,7 @@
  	
 	<div class="content">
 	 	<div class="posts">
-		 	<article class="post">
+<!-- 		 	<article class="post">
 		 	<img src="images/karl.jpg">
 		 	<h3><a href="#">Karl Snopes</a></h3>
 		 	<small>sometime in the 1800's · <span class="fa fa-globe"></span></small>
@@ -37,10 +37,10 @@
 		 	<p>President Obama has signed a new law lowering the 
 	      minimum drinking age to 18. Let the ruling classes tremble at a
 	      Communistic revolution.</p>
-		 	</article>
+		 	</article> -->
 		</div>
 
-		<button class="load-more">Load More</button>
+		<div class="loading"><span class="fa fa-spinner fa-pulse fa-3x"></span></div>
 
  	</div>
 
@@ -58,21 +58,21 @@
 	<script src="//localhost:35729/livereload.js"></script>
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<script>
-	$(".load-more").on("click", function(){
+
+	var requestPosts = function(){
 		var $this= $(this);
 		var button = ".load-more";
-		$this.html("<span class='fa fa-spinner fa-pulse'></span>");
+
 		var request = $.ajax({
 			url:"http://thomaswilburn.net:8080/social",
 			data: {
 			}
 		});
 		request.done(function(data){
-			setTimeout(displayPosts(data,button), 10 * 1000);
+			displayPosts();
 
 		});
-	});
-
+	}
 	var displayPosts = function(data,button){
 		for (var i = 0; i < data.updates.length; i++){
 			var update = template(data.updates[i]);
@@ -89,6 +89,14 @@
 		});
 
 	};
+
+	requestPosts();
+
+	$(window).on("scroll", function(){
+		if ((this.innerHeight + this.scrollY) >= document.body.offsetHeight) {
+			setTimeout(requestPosts, 4*1000);
+		}
+	});
 	</script>
 </body>
 </html>
