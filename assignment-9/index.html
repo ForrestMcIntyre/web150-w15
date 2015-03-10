@@ -47,9 +47,9 @@
  	<script type="template/html" class="post-template">
 		<article class="post">
 	 	<img src="images/karl.jpg">
-	 	<h3><a href="#">Karl Snopes</a></h3>
+	 	<h3><a href="#">{{name}}</a></h3>
 	 	<small>sometime in the 1800s · <span class="fa fa-globe"></span></small>
-	 	<p>{{post}}</p>
+	 	<p>{{status}}</p>
 	 	</article>
  	</script>
 
@@ -75,7 +75,7 @@
 
 	var displayPosts = function(data,button){
 		for (var i = 0; i < data.updates.length; i++){
-			var update = template(data.updates[i].status);
+			var update = template(data.updates[i]);
 			$(".posts").append(update);
 		}
 		$(button).html("Load More");
@@ -83,8 +83,10 @@
 
 	var template = function(data){
 		var update = $(".post-template").html();
-		var regex = '/\{\{post\}\}/g';
-		return update.replace("{{post}}", data);
+		var regex = /\{\{(\w+)\}\}/g;
+		return update.replace(regex, function(match, tag){
+			return data[tag];
+		});
 
 	};
 	</script>
