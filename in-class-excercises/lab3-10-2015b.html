@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <body>
+
+    <script>
+var f = function(){
+  console.log(this, arguments);
+};
+
+f(1,2,3);
+
+var obj = {
+  log: f,
+  hello: "world"
+};
+
+// obj.log = f
+obj.log(4,5,6);
+
+
+var target ={text: "This space etc., etc."};
+
+f.call(target, 7,8,9);
+
+f.apply(target, [9,1,1]);
+
+var nums = [22, 17000, .5, -1, 5463];
+var max = Math.max.apply(Math, nums);
+console.log(max);
+
+
+var max = function(){
+  var highest = arguments[0];
+  for (var i = 0; i < arguments.length; i++){
+    if (arguments[i] > highest){
+      highest = arguments[i];
+    }
+  }
+};
+console.log(max(100, 2, 4, 300, -2, -5745634));
+
+var hello = function(name){
+  console.log("hello " + name);
+};
+
+//setTimeout(wait(hello, "Forrest"), 5000);
+
+var wait = function(fn){
+  var args = [];
+  for (var i = 1; i < arguments.length; i++){
+    args.push(arguments[i]);
+  }
+  setTimeout(function(){
+    fn.apply(null, args);
+  }, 5000);
+};
+
+wait(hello, "Forrest")
+
+    </script>
+  </body>
+</html>
