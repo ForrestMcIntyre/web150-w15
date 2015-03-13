@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <body>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+var Timer = function(duration, repeat){
+  this.duration = duration;
+  this.repeat = repeat;
+  this.complete = false;
+  this.start();
+};
+
+Timer.prototype = {
+  onTick: function() {},
+  onComplete: function() {},
+  wait: function(duration, fn){
+    setTimeout(fn.bind(this), duration)
+  },
+  tick: function(){
+    if (!this.complete){
+      this.onTick();
+      this.wait(1000, this.tick);
+    }
+  },
+  start: function(){
+    this.wait(this.duration, function(){
+      this.complete = true;
+      this.onComplete();
+      if(this.repeat){
+        this.start();
+      }
+    });
+    this.tick();
+  }
+};
+
+var alarm = new Timer(1, true);
+alarm.onComplete = function(){
+  console.error("RIIIIIIIIIIIIIIIIIIIIIIING!!!!!!!");
+}
+
+var tnt = new Timer(10000, false);
+tnt.onTick = function() {
+  console.info("tick...");
+};
+tnt.onComplete = function() {
+  console.error("BOOM!");
+}
+    </script>
+  </body>
+</html>
